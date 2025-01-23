@@ -48,7 +48,6 @@ public class ImageController {
                 return ResponseEntity.notFound().build();
             }
     
-            // Détecter le type MIME de l'image en fonction de l'extension du fichier
             String fileExtension = filename.substring(filename.lastIndexOf(".") + 1).toLowerCase();
             MediaType mediaType;
     

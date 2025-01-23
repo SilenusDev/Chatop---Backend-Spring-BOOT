@@ -31,10 +31,6 @@ public class JWTService {
 		JwtEncoderParameters jwtEncoderParameters = JwtEncoderParameters.from(JwsHeader.with(MacAlgorithm.HS256).build(), claims);
 		return this.jwtEncoder.encode(jwtEncoderParameters).getTokenValue();
 	}
-
-
-
-
     
     public String generateSimpleToken(String email) {
         

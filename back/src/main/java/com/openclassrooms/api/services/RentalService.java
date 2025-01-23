@@ -59,7 +59,6 @@ public class RentalService {
         }
     }
     
-
     public RentalDTO updateRental(Long id, RentalDTO rentalDetails) {
         Optional<Rental> optionalRental = rentalRepository.findById(id);
         if (optionalRental.isPresent()) {
@@ -67,11 +66,9 @@ public class RentalService {
             rental.setName(rentalDetails.getName());
             rental.setSurface(rentalDetails.getSurface());
             rental.setPrice(rentalDetails.getPrice());
-            rental.setPicture(rentalDetails.getPicture());
             rental.setDescription(rentalDetails.getDescription());
-            rental.setOwner_id(rentalDetails.getOwner_id());
             rental.setUpdated_at(LocalDateTime.now());
-
+    
             Rental updatedRental = rentalRepository.save(rental);
             return convertToDTO(updatedRental);
         } else {

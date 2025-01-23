@@ -28,7 +28,6 @@ public class ImageUploadService {
         Files.createDirectories(filePath.getParent());
         Files.write(filePath, file.getBytes());
 
-        // Retourner le chemin complet de l'image
         return IMAGE_PATH_PREFIX + uniqueFilename;
     }
 }

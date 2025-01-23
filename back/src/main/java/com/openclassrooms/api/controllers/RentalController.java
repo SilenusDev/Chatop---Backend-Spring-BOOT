@@ -139,17 +139,29 @@ public class RentalController {
     })
     @PutMapping("/{id}")
     public ResponseEntity<?> updateRental(
-            @PathVariable Long id,
-            @RequestBody RentalDTO rentalDetails
-    ) {
+            @PathVariable("id") Long id,
+            @RequestParam("name") String name,
+            @RequestParam("surface") Double surface,
+            @RequestParam("price") Double price,
+            @RequestParam("description") String description) {
         try {
-            RentalDTO updatedRental = rentalService.updateRental(id, rentalDetails);
-            return ResponseEntity.ok()
+            // Créer un RentalDTO à partir des données reçues
+            RentalDTO rentalDTO = new RentalDTO();
+            rentalDTO.setName(name);
+            rentalDTO.setSurface(surface);
+            rentalDTO.setPrice(price);
+            rentalDTO.setDescription(description);
+
+            // Mettre à jour la location dans la base de données
+            RentalDTO updatedRental = rentalService.updateRental(id, rentalDTO);
+
+            return ResponseEntity.status(HttpStatus.OK)
                     .body(Map.of(
                             "message", "Rental updated successfully",
                             "rental", updatedRental
                     ));
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(new ErrorResponse(
                             "Error updating rental: " + e.getMessage(),
@@ -157,4 +169,5 @@ public class RentalController {
                     ));
         }
     }
+
 }

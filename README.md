@@ -14,7 +14,8 @@ execute schema.sql
 execute data.sql
 
 ### Spring Boot
-Install command :
+
+Install command in back folder :
 mvn clean install
 
 run the project with :
@@ -25,7 +26,7 @@ Link :
 http://localhost:3001/swagger-ui/index.html#/
 
 ## Install FrontEnd
-Install command :
+Install command in front folder :
 npm install
 
 launch front app:
